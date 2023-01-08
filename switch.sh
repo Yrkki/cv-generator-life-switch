@@ -19,7 +19,7 @@ for i in "${!apps[@]}"; do
 
     isOff=$(heroku scale -a $app)
 
-    if [ $isOff == "web=0:Free" ]; then
+    if [ $isOff == "web=0:Eco" ]; then
         heroku scale web=1 -a $app
         heroku maintenance:off -a $app
     else
