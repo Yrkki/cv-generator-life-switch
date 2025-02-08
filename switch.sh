@@ -15,7 +15,12 @@ apps=(cv-generator-fe cv-generator-fe-eu)
 
 for i in "${!apps[@]}"; do
     app=${apps[$i]}
-    echo $'\033[1;30m'Processing the $'\033[0;35m'$app$'\033[1;30m' app...$'\033[0m'
+    if [[ $app =~ '-eu' ]]; then
+        country=🇮🇪
+    else
+        country=🇺🇸
+    fi
+    echo $'\033[1;30m'Processing the $'\033[0;35m'$app$'\033[1;30m' $country app...$'\033[0m'
 
     isOff=$(heroku scale -a $app)
 
